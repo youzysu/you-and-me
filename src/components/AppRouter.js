@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "../routes/Home"
-import Auth from "../routes/Auth"
+import Home from "routes/Home"
+import Auth from "routes/Auth"
 
 function AppRouter({ isLoggedIn }) {
 
