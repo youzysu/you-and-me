@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Home from "routes/Home"
 import Auth from "routes/Auth"
+import SignUp from "routes/SignUp"
 
 function AppRouter({ isLoggedIn }) {
 
@@ -14,10 +15,16 @@ function AppRouter({ isLoggedIn }) {
             element={<Home />}
           />
         ) : (
+          <>
           <Route 
             path="/"
             element={<Auth />}
           />
+          <Route 
+            path="/signup"
+            element={<SignUp />}
+            />
+          </>
         )}
       </Routes>
     </BrowserRouter>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { authService } from "fbase";
 import { Link } from "react-router-dom"
 
-function Auth() {
+function SignUp() {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("")
@@ -19,7 +19,7 @@ function Auth() {
     const onSubmit = async (event) => {
         event.preventDefault();
         try {
-            await authService.signInWithEmailAndPassword(email, password)
+            await authService.createUserWithEmailAndPassword(email, password)
         } catch(err) {
             setError(err.message)
         }
@@ -42,19 +42,18 @@ function Auth() {
                     required 
                     value={password} 
                     onChange={onChange} />
-                <input type="submit" value="로그인" />
+                <input type="submit" value="가입하기" />
                 <br />
                 <span>{error}</span>
                 <hr />
             </form>
             <div>
-                <button>Google로 로그인</button>
-                <span>계정이 없으신가요?
-                    <Link to="/signup">가입하기</Link>
+                <span>계정이 있으신가요?
+                    <Link to="/">로그인</Link>
                 </span>
             </div>
         </div>
     )
 }
 
-export default Auth
+export default SignUp
