@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import { authService } from "fbase";
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 
 function SignUp() {
+    const Navigate = useNavigate();
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [error, setError] = useState("")
@@ -23,6 +24,7 @@ function SignUp() {
         } catch(err) {
             setError(err.message)
         }
+        Navigate("/")
     }
 
     return (
