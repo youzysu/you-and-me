@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { authService } from "fbase";
+import { authService, firebaseInstance } from "fbase";
 import { Link } from "react-router-dom"
 
 function Auth() {
@@ -23,6 +23,16 @@ function Auth() {
         } catch(err) {
             setError(err.message)
         }
+    }
+    const socialLoginClick = async (event) => {
+        const {
+            target: {name},
+        } = event;
+        let provider;
+        if (name === "Google") {
+            provider = new firebaseInstance.auth.GoogleAuthProvider();
+        } 
+        await authService.signInWithPopup(provider)
     }
 
     return (
@@ -48,7 +58,7 @@ function Auth() {
                 <hr />
             </form>
             <div>
-                <button>Google로 로그인</button>
+                <button onClick={socialLoginClick} name="Google">Google로 로그인</button>
                 <span>계정이 없으신가요?
                     <Link to="/signup">가입하기</Link>
                 </span>
