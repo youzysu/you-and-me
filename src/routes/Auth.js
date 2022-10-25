@@ -58,7 +58,7 @@ function Auth() {
                 <hr />
             </form>
             <div>
-                <button onClick={socialLoginClick} name="Google">Google로 로그인</button>
+                <button onClick={socialLoginClick} name="Google" className="py-2 px-4 font-semibold rounded-lg shadow-md text-white bg-green-500 hover:bg-green-700">Google로 로그인</button>
                 <span>계정이 없으신가요?
                     <Link to="/signup">가입하기</Link>
                 </span>
